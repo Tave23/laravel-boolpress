@@ -11,6 +11,7 @@ Vue.use(VueRouter);
 import Home from './components/pages/Home';
 import About from './components/pages/About';
 import Contacts from './components/pages/Contacts';
+import Main from './components/partials/Main';
 
 const router = new VueRouter({
    mode: 'history',
@@ -32,6 +33,11 @@ const router = new VueRouter({
          path: '/contatti',
          name: 'contacts',
          component: Contacts,
+      },
+      {
+         path: '/posts-list',
+         name: 'blog',
+         component: Main,
       }
    ]
 })
