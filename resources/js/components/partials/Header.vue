@@ -5,13 +5,13 @@
          <h3>Un bellissimo Header</h3>
          <ul>
             <li>
-               <a href="#">Home</a>
+               <router-link :to="{name: 'home'}">Home</router-link>
             </li>
             <li>
-               <a href="#">Contattaci</a>
+               <router-link :to="{name: 'about'}">Chi siamo</router-link>
             </li>
             <li>
-               <a href="#">Chi siamo</a>
+               <router-link :to="{name: 'contacts'}">Contatti</router-link>
             </li>
          </ul>
       </nav>
@@ -48,6 +48,9 @@ header{
             text-decoration: none;
             &:hover{
                text-decoration: underline;
+            }
+            &.active{
+               text-decoration: underline 2px black;
             }
          }
       }
