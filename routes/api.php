@@ -18,11 +18,17 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-// Route::get('prova', function(){
-//     return response()->json([
 
-//     ]);
-// });
 
-// rotta che va a puntare al controller
-Route::get('posts', 'Api\PostController@index');
+// // rotta che va a puntare al controller
+// Route::get('posts', 'Api\PostController@index');
+
+// // rotta chiamata api singolo post in base allo slug
+// Route::get('{slug}', 'Api\PostController@show');
+
+Route::namespace('Api')
+   ->prefix('posts')
+   ->group(function(){
+      Route::get('/', 'PostController@index');
+      Route::get('{slug}', 'PostController@show');
+   });

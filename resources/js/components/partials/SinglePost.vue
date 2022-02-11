@@ -1,9 +1,11 @@
 <template>
    <article>
       <h4>
-         <strong><a href="#">
-            {{ post.title_post }}
-         </a></strong>
+         <strong>
+            <router-link :to="{name: 'singlePostInfo', params:{slug: post.slug}}">
+               {{ post.title_post }}
+            </router-link>
+         </strong>
       </h4>
       <p class="data">{{ updateDate }}</p>
       <p class="content">{{ post.content }}</p>
