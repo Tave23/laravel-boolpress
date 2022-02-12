@@ -48,7 +48,7 @@ article{
       text-decoration: none;
       color: black;
       &:hover{
-         color: blue;
+         color: lightseagreen;
       }
    }
 }

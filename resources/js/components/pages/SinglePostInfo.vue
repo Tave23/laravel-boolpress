@@ -93,7 +93,7 @@ export default {
       }
       span{
          padding: 8px;
-         background-color: aqua;
+         background-color: lightseagreen;
          border: 1px solid black;
       }
       

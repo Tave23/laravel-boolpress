@@ -2345,7 +2345,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "h3[data-v-4ac4d2f8] {\n  padding: 35px 0;\n}\n.container[data-v-4ac4d2f8] {\n  width: 65%;\n  margin: 0 auto;\n}\n.container button[data-v-4ac4d2f8] {\n  margin: 20px 10px;\n  background-color: aqua;\n  border: 1px solid black;\n  padding: 5px;\n  border-radius: 10px;\n}\n.container button[data-v-4ac4d2f8]:hover {\n  background-color: #005252;\n  color: white;\n  transition: all 0.3s;\n}\n.container button[data-v-4ac4d2f8]:disabled {\n  background-color: lightgrey;\n  color: black;\n}", ""]);
+exports.push([module.i, "h3[data-v-4ac4d2f8] {\n  padding: 35px 0;\n}\n.container[data-v-4ac4d2f8] {\n  width: 65%;\n  margin: 0 auto;\n}\n.container button[data-v-4ac4d2f8] {\n  margin: 20px 10px;\n  background-color: lightseagreen;\n  border: 1px solid black;\n  padding: 5px;\n  border-radius: 10px;\n}\n.container button[data-v-4ac4d2f8]:hover {\n  background-color: #005252;\n  color: white;\n  transition: all 0.3s;\n}\n.container button[data-v-4ac4d2f8]:disabled {\n  background-color: lightgrey;\n  color: black;\n}", ""]);
 
 // exports
 
@@ -2421,7 +2421,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container[data-v-77cb33ec] {\n  width: 65%;\n  min-height: 70vh;\n  margin: 100px auto;\n}\n.container h5[data-v-77cb33ec] {\n  margin: 15px 0;\n}\n.container p[data-v-77cb33ec] {\n  margin: 20px 0;\n}\n.container h2[data-v-77cb33ec] {\n  margin-top: 15px;\n}\n.container .data[data-v-77cb33ec] {\n  font-style: italic;\n}\n.container .tags[data-v-77cb33ec] {\n  margin: 20px 0;\n  display: inline-block;\n}\n.container .tags span[data-v-77cb33ec] {\n  margin-right: 10px;\n}\n.container span[data-v-77cb33ec] {\n  padding: 8px;\n  background-color: aqua;\n  border: 1px solid black;\n}", ""]);
+exports.push([module.i, ".container[data-v-77cb33ec] {\n  width: 65%;\n  min-height: 70vh;\n  margin: 100px auto;\n}\n.container h5[data-v-77cb33ec] {\n  margin: 15px 0;\n}\n.container p[data-v-77cb33ec] {\n  margin: 20px 0;\n}\n.container h2[data-v-77cb33ec] {\n  margin-top: 15px;\n}\n.container .data[data-v-77cb33ec] {\n  font-style: italic;\n}\n.container .tags[data-v-77cb33ec] {\n  margin: 20px 0;\n  display: inline-block;\n}\n.container .tags span[data-v-77cb33ec] {\n  margin-right: 10px;\n}\n.container span[data-v-77cb33ec] {\n  padding: 8px;\n  background-color: lightseagreen;\n  border: 1px solid black;\n}", ""]);
 
 // exports
 
@@ -2497,7 +2497,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h4[data-v-52028fca] {\n  margin: 25px 0 5px;\n}\n.data[data-v-52028fca] {\n  font-size: 12px;\n  font-style: italic;\n  margin-bottom: 15px;\n}\narticle a[data-v-52028fca] {\n  text-decoration: none;\n  color: black;\n}\narticle a[data-v-52028fca]:hover {\n  color: blue;\n}", ""]);
+exports.push([module.i, "h4[data-v-52028fca] {\n  margin: 25px 0 5px;\n}\n.data[data-v-52028fca] {\n  font-size: 12px;\n  font-style: italic;\n  margin-bottom: 15px;\n}\narticle a[data-v-52028fca] {\n  text-decoration: none;\n  color: black;\n}\narticle a[data-v-52028fca]:hover {\n  color: lightseagreen;\n}", ""]);
 
 // exports
 
@@ -2516,7 +2516,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container[data-v-4e34a1ea]{\n   height: 80vh;\n   display: flex;\n   justify-content: center;\n   align-items: center;\n}\nh2[data-v-4e34a1ea]{\n   color: aqua;\n}\n\n\n/* loading css */\n.lds-ripple[data-v-4e34a1ea] {\n  display: inline-block;\n  position: relative;\n  width: 80px;\n  height: 80px;\n}\n.lds-ripple div[data-v-4e34a1ea] {\n  position: absolute;\n  border: 4px solid aqua;\n  opacity: 1;\n  border-radius: 50%;\n  -webkit-animation: lds-ripple-data-v-4e34a1ea 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;\n          animation: lds-ripple-data-v-4e34a1ea 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;\n}\n.lds-ripple div[data-v-4e34a1ea]:nth-child(2) {\n  -webkit-animation-delay: -0.5s;\n          animation-delay: -0.5s;\n}\n@-webkit-keyframes lds-ripple-data-v-4e34a1ea {\n0% {\n    top: 36px;\n    left: 36px;\n    width: 0;\n    height: 0;\n    opacity: 1;\n}\n100% {\n    top: 0px;\n    left: 0px;\n    width: 72px;\n    height: 72px;\n    opacity: 0;\n}\n}\n@keyframes lds-ripple-data-v-4e34a1ea {\n0% {\n    top: 36px;\n    left: 36px;\n    width: 0;\n    height: 0;\n    opacity: 1;\n}\n100% {\n    top: 0px;\n    left: 0px;\n    width: 72px;\n    height: 72px;\n    opacity: 0;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.container[data-v-4e34a1ea]{\n   height: 80vh;\n   display: flex;\n   justify-content: center;\n   align-items: center;\n}\nh2[data-v-4e34a1ea]{\n   color: lightseagreen;\n}\n\n\n/* loading css */\n.lds-ripple[data-v-4e34a1ea] {\n  display: inline-block;\n  position: relative;\n  width: 80px;\n  height: 80px;\n}\n.lds-ripple div[data-v-4e34a1ea] {\n  position: absolute;\n  border: 4px solid lightseagreen;\n  opacity: 1;\n  border-radius: 50%;\n  -webkit-animation: lds-ripple-data-v-4e34a1ea 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;\n          animation: lds-ripple-data-v-4e34a1ea 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;\n}\n.lds-ripple div[data-v-4e34a1ea]:nth-child(2) {\n  -webkit-animation-delay: -0.5s;\n          animation-delay: -0.5s;\n}\n@-webkit-keyframes lds-ripple-data-v-4e34a1ea {\n0% {\n    top: 36px;\n    left: 36px;\n    width: 0;\n    height: 0;\n    opacity: 1;\n}\n100% {\n    top: 0px;\n    left: 0px;\n    width: 72px;\n    height: 72px;\n    opacity: 0;\n}\n}\n@keyframes lds-ripple-data-v-4e34a1ea {\n0% {\n    top: 36px;\n    left: 36px;\n    width: 0;\n    height: 0;\n    opacity: 1;\n}\n100% {\n    top: 0px;\n    left: 0px;\n    width: 72px;\n    height: 72px;\n    opacity: 0;\n}\n}\n\n", ""]);
 
 // exports
 

@@ -86,7 +86,7 @@ h3{
    margin: 0 auto;
    button{
       margin: 20px 10px;
-      background-color: aqua;
+      background-color: lightseagreen;
       border: 1px solid black;
       padding: 5px;
       border-radius: 10px;
