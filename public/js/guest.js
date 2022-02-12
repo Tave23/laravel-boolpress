@@ -2465,7 +2465,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container[data-v-77cb33ec] {\n  width: 65%;\n  min-height: 70vh;\n  margin: 100px auto;\n}\n.container h5[data-v-77cb33ec] {\n  margin: 15px 0;\n}\n.container p[data-v-77cb33ec] {\n  margin: 20px 0;\n}\n.container h2[data-v-77cb33ec] {\n  margin-top: 15px;\n}\n.container .data[data-v-77cb33ec] {\n  font-style: italic;\n}\n.container .tags[data-v-77cb33ec] {\n  margin: 20px 0;\n  display: inline-block;\n}\n.container .tags span[data-v-77cb33ec] {\n  margin-right: 10px;\n}\n.container span[data-v-77cb33ec] {\n  padding: 8px;\n  background-color: lightseagreen;\n  border: 1px solid black;\n}", ""]);
+exports.push([module.i, ".container[data-v-77cb33ec] {\n  width: 65%;\n  min-height: 70vh;\n  margin: 100px auto;\n}\n.container h5[data-v-77cb33ec] {\n  margin: 15px 0;\n}\n.container p[data-v-77cb33ec] {\n  margin: 20px 0;\n}\n.container h2[data-v-77cb33ec] {\n  margin-top: 15px;\n}\n.container .data[data-v-77cb33ec] {\n  font-style: italic;\n}\n.container .tags[data-v-77cb33ec] {\n  margin: 20px 0;\n  display: inline-block;\n}\n.container .tags span[data-v-77cb33ec] {\n  margin-right: 10px;\n}\n.container span[data-v-77cb33ec] {\n  padding: 8px;\n  background-color: lightseagreen;\n  border: 1px solid black;\n}\n.container .back_to_link[data-v-77cb33ec] {\n  color: red;\n  text-decoration: underline;\n}\n.container .back_to_link[data-v-77cb33ec]:hover {\n  text-decoration: underline;\n}", ""]);
 
 // exports
 
@@ -4263,9 +4263,11 @@ var render = function () {
       _vm._v(" "),
       _c("p", [_vm._v(_vm._s(this.post.content))]),
       _vm._v(" "),
-      _c("router-link", { attrs: { to: { name: "blog" } } }, [
-        _vm._v("Torna alla lista dei post"),
-      ]),
+      _c(
+        "router-link",
+        { staticClass: "back_to_link", attrs: { to: { name: "blog" } } },
+        [_vm._v("Torna alla lista dei post")]
+      ),
     ],
     2
   )

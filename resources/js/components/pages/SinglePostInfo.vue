@@ -18,7 +18,7 @@
 
       <p>{{ this.post.content }}</p>
 
-      <router-link :to="{name: 'blog'}">Torna alla lista dei post</router-link>
+      <router-link :to="{name: 'blog'}" class="back_to_link">Torna alla lista dei post</router-link>
    </div>
 </template>
 
@@ -97,6 +97,13 @@ export default {
          padding: 8px;
          background-color: lightseagreen;
          border: 1px solid black;
+      }
+      .back_to_link{
+         color: red;
+         text-decoration: underline;
+         &:hover{
+            text-decoration: underline;
+         }
       }
       
    }
