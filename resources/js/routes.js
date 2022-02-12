@@ -13,6 +13,7 @@ import About from './components/pages/About';
 import Contacts from './components/pages/Contacts';
 import Main from './components/partials/Main';
 import SinglePostInfo from './components/pages/SinglePostInfo';
+import Error404 from './components/pages/Error404'; 
 
 
 const router = new VueRouter({
@@ -45,7 +46,14 @@ const router = new VueRouter({
          path: '/info/:slug',
          name: 'singlePostInfo',
          component: SinglePostInfo,
-      }
+      },
+      {
+         // rotta per gestione pagina non trovata.
+         // * a significare "tutte le rotte" - nome inutile visto che non va linkato da nessuna parte
+         path: '*',
+         component: Error404,
+      },
+
    ]
 })
 
