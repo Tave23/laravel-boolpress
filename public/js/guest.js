@@ -2155,6 +2155,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePostInfo",
   data: function data() {
@@ -4243,9 +4245,11 @@ var render = function () {
     [
       _c("h2", [_vm._v(_vm._s(this.post.title_post))]),
       _vm._v(" "),
-      _c("h6", { staticClass: "data" }, [
-        _vm._v("Creato il: " + _vm._s(_vm.updateDate)),
-      ]),
+      this.post.content != ""
+        ? _c("h6", { staticClass: "data" }, [
+            _vm._v("Creato il: " + _vm._s(_vm.updateDate)),
+          ])
+        : _vm._e(),
       _vm._v(" "),
       this.post.category
         ? _c("h5", [_vm._v("Categoria: " + _vm._s(this.post.category.name))])
@@ -20406,6 +20410,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _components_pages_SinglePostInfo__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     // rotta per gestione pagina non trovata.
+    // DA METTERE IN FONDO!!!
     // * a significare "tutte le rotte" - nome inutile visto che non va linkato da nessuna parte
     path: '*',
     component: _components_pages_Error404__WEBPACK_IMPORTED_MODULE_7__["default"]

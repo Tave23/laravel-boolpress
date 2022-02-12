@@ -3,7 +3,9 @@
 
       <h2>{{this.post.title_post}}</h2>
 
-      <h6 class="data">Creato il: {{ updateDate }}</h6>
+      <h6 
+      v-if="(this.post.content != '')"
+      class="data">Creato il: {{ updateDate }}</h6>
 
       <h5
       v-if="this.post.category"

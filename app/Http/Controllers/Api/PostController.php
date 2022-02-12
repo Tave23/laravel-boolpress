@@ -19,6 +19,12 @@ class PostController extends Controller
 
         $post = Post::where('slug', $slug)->with(['category', 'tags'])->first();
 
+        if (!$post) {
+            $post = [
+                'title_post' => 'Post non trovato',
+                'content' => `<router-link :to="{name: 'blog'}">Torna alla lista dei post</router-link>`];
+        }
+
         return response()->json($post);
 
     }

@@ -49,6 +49,7 @@ const router = new VueRouter({
       },
       {
          // rotta per gestione pagina non trovata.
+         // DA METTERE IN FONDO!!!
          // * a significare "tutte le rotte" - nome inutile visto che non va linkato da nessuna parte
          path: '*',
          component: Error404,
