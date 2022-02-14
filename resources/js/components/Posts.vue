@@ -42,7 +42,11 @@
 
       </div>
 
-      <Sidebar />
+      <Sidebar 
+      :tags="tags"
+      :categories="categories"
+      
+      />
    </div>
 </template>
 
@@ -61,9 +65,12 @@ export default {
    },
    data(){
       return{
-         urlApi: 'http://127.0.0.1:8000/api/posts?page=',
+         urlApi: 'http://127.0.0.1:8000/api/posts',
+         paginatation: '?page=',
          posts: null,
-         pages: {}
+         pages: {},
+         tags: [],
+         categories:[],
       }
    },
    mounted(){
@@ -71,9 +78,15 @@ export default {
    },
    methods:{
       printPosts(page = 1){
-         axios.get(this.urlApi + page)
+         axios.get(this.urlApi + this.paginatation + page)
          .then(result => {
-            this.posts = result.data.posts.data
+            // stampo i post
+            this.posts = result.data.posts.data;
+            // stampo i tags
+            this.tags = result.data.tags;
+            // stampo le categories
+            this.categories = result.data.categories;
+            console.log(this.tags, this.categories);
             // console.log(result.data.posts);
             this.pages = {
                current : result.data.posts.current_page,

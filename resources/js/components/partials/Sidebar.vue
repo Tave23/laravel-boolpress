@@ -2,25 +2,27 @@
    <!-- sidebar -->
       <div class="sidebar">
          <div class="categories">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
+            <span
+            v-for="category in categories" :key="`categ${category.id}`">
+               {{category.name}}
+            </span>
          </div>
          <div class="tags">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
+            <span
+            v-for="tag in tags" :key="`tag${tag.id}`">
+               {{tag.name}}
+            </span>
          </div>
       </div>
 </template>
 
 <script>
 export default {
-   name: "Sidebar"
+   name: "Sidebar",
+   props:{
+      'tags': Array,
+      'categories': Array,
+   }
 }
 </script>
 

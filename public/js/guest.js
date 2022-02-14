@@ -1996,6 +1996,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2008,9 +2012,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      urlApi: 'http://127.0.0.1:8000/api/posts?page=',
+      urlApi: 'http://127.0.0.1:8000/api/posts',
+      paginatation: '?page=',
       posts: null,
-      pages: {}
+      pages: {},
+      tags: [],
+      categories: []
     };
   },
   mounted: function mounted() {
@@ -2021,8 +2028,14 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get(this.urlApi + page).then(function (result) {
-        _this.posts = result.data.posts.data; // console.log(result.data.posts);
+      axios.get(this.urlApi + this.paginatation + page).then(function (result) {
+        // stampo i post
+        _this.posts = result.data.posts.data; // stampo i tags
+
+        _this.tags = result.data.tags; // stampo le categories
+
+        _this.categories = result.data.categories;
+        console.log(_this.tags, _this.categories); // console.log(result.data.posts);
 
         _this.pages = {
           current: result.data.posts.current_page,
@@ -2352,10 +2365,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Sidebar"
+  name: "Sidebar",
+  props: {
+    'tags': Array,
+    'categories': Array
+  }
 });
 
 /***/ }),
@@ -4163,7 +4178,7 @@ var render = function () {
           : _c("div", [_c("Loading")], 1),
       ]),
       _vm._v(" "),
-      _c("Sidebar"),
+      _c("Sidebar", { attrs: { tags: _vm.tags, categories: _vm.categories } }),
     ],
     1
   )
@@ -4557,40 +4572,31 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "sidebar" }, [
+    _c(
+      "div",
+      { staticClass: "categories" },
+      _vm._l(_vm.categories, function (category) {
+        return _c("span", { key: "categ" + category.id }, [
+          _vm._v("\n            " + _vm._s(category.name) + "\n         "),
+        ])
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "tags" },
+      _vm._l(_vm.tags, function (tag) {
+        return _c("span", { key: "tag" + tag.id }, [
+          _vm._v("\n            " + _vm._s(tag.name) + "\n         "),
+        ])
+      }),
+      0
+    ),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "sidebar" }, [
-      _c("div", { staticClass: "categories" }, [
-        _c("span", [_vm._v("1")]),
-        _vm._v(" "),
-        _c("span", [_vm._v("2")]),
-        _vm._v(" "),
-        _c("span", [_vm._v("3")]),
-        _vm._v(" "),
-        _c("span", [_vm._v("4")]),
-        _vm._v(" "),
-        _c("span", [_vm._v("5")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "tags" }, [
-        _c("span", [_vm._v("1")]),
-        _vm._v(" "),
-        _c("span", [_vm._v("2")]),
-        _vm._v(" "),
-        _c("span", [_vm._v("3")]),
-        _vm._v(" "),
-        _c("span", [_vm._v("4")]),
-        _vm._v(" "),
-        _c("span", [_vm._v("5")]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

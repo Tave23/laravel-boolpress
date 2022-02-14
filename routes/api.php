@@ -31,4 +31,6 @@ Route::namespace('Api')
    ->group(function(){
       Route::get('/', 'PostController@index');
       Route::get('{slug}', 'PostController@show');
+      Route::get('/category/{slug}', 'PostController@PostByCategory');
+      Route::get('/tag/{slug}', 'PostController@PostByTag');
    });
