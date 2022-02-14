@@ -2000,6 +2000,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2017,40 +2027,73 @@ __webpack_require__.r(__webpack_exports__);
       posts: null,
       pages: {},
       tags: [],
-      categories: []
+      categories: [],
+      success: true,
+      error_msg: '',
+      title: 'Ecco la lista dei Post'
     };
   },
   mounted: function mounted() {
     this.printPosts();
   },
   methods: {
-    getPostBy: function getPostBy(slug_category) {
+    getPostByCateg: function getPostByCateg(slug_category) {
       var _this = this;
 
+      this.reset();
       console.log(slug_category);
       axios.get(this.urlApi + '/category/' + slug_category).then(function (response) {
-        console.log(response.data.category.posts);
+        // console.log(response.data.category.posts);
         _this.posts = response.data.category.posts;
+        _this.title = 'Ecco i post con la categoria: ' + response.data.category.name;
+
+        if (!response.data.success) {
+          _this.success = false;
+          _this.error_msg = response.data.console.error();
+        }
+      });
+    },
+    getPostByTag: function getPostByTag(slug_tag) {
+      var _this2 = this;
+
+      this.reset();
+      console.log(slug_tag);
+      axios.get(this.urlApi + '/tag/' + slug_tag).then(function (response) {
+        // console.log(response.data.category.posts);
+        _this2.posts = response.data.tag.posts;
+        _this2.title = 'Ecco i post con il tag: ' + response.data.tag.name;
+
+        if (!response.data.success) {
+          _this2.success = false;
+          _this2.error_msg = response.data.console.error();
+        }
       });
     },
     printPosts: function printPosts() {
-      var _this2 = this;
+      var _this3 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.reset();
       axios.get(this.urlApi + this.pagination + page).then(function (result) {
         // stampo i post
-        _this2.posts = result.data.posts.data; // stampo i tags
+        _this3.posts = result.data.posts.data; // stampo i tags
 
-        _this2.tags = result.data.tags; // stampo le categories
+        _this3.tags = result.data.tags; // stampo le categories
 
-        _this2.categories = result.data.categories;
-        console.log(_this2.tags, _this2.categories); // console.log(result.data.posts);
+        _this3.categories = result.data.categories;
+        console.log(_this3.tags, _this3.categories); // console.log(result.data.posts);
 
-        _this2.pages = {
+        _this3.pages = {
           current: result.data.posts.current_page,
           last: result.data.posts.last_page
         };
       });
+    },
+    reset: function reset() {
+      this.success = true;
+      this.error_msg = '';
+      this.posts = null;
+      this.title = 'Ecco la lista dei Post';
     }
   }
 });
@@ -2595,7 +2638,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h2[data-v-a7bce10a] {\n  text-align: center;\n  margin-top: 20px;\n}\nmain[data-v-a7bce10a] {\n  height: 50vw;\n}", ""]);
+exports.push([module.i, "h2[data-v-a7bce10a] {\n  text-align: center;\n  margin-top: 20px;\n}\nmain[data-v-a7bce10a] {\n  min-height: 60vw;\n}", ""]);
 
 // exports
 
@@ -4131,69 +4174,82 @@ var render = function () {
     { staticClass: "container" },
     [
       _c("div", { staticClass: "blog-side" }, [
-        _c("h3", [_vm._v("Ecco la lista dei Post")]),
-        _vm._v(" "),
-        _vm.posts
-          ? _c(
-              "div",
-              [
-                _vm._l(_vm.posts, function (post) {
-                  return _c("SinglePost", {
-                    key: "post" + post.id,
-                    attrs: { post: post },
-                  })
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    attrs: { disabled: _vm.pages.current === 1 },
-                    on: {
-                      click: function ($event) {
-                        return _vm.printPosts(_vm.pages.current - 1)
-                      },
-                    },
-                  },
-                  [_vm._v("Prev Page")]
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.pages.last, function (page) {
-                  return _c(
-                    "button",
-                    {
-                      key: "buttons " + page,
-                      attrs: { disabled: _vm.pages.current === page },
-                      on: {
-                        click: function ($event) {
-                          return _vm.printPosts(page)
+        _vm.success
+          ? _c("div", [
+              _c("h3", [_vm._v(_vm._s(_vm.title))]),
+              _vm._v(" "),
+              _vm.posts
+                ? _c(
+                    "div",
+                    [
+                      _vm._l(_vm.posts, function (post) {
+                        return _c("SinglePost", {
+                          key: "post" + post.id,
+                          attrs: { post: post },
+                        })
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          attrs: { disabled: _vm.pages.current === 1 },
+                          on: {
+                            click: function ($event) {
+                              return _vm.printPosts(_vm.pages.current - 1)
+                            },
+                          },
                         },
-                      },
-                    },
-                    [_vm._v("\n         " + _vm._s(page) + "\n         ")]
+                        [_vm._v("Prev Page")]
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.pages.last, function (page) {
+                        return _c(
+                          "button",
+                          {
+                            key: "buttons " + page,
+                            attrs: { disabled: _vm.pages.current === page },
+                            on: {
+                              click: function ($event) {
+                                return _vm.printPosts(page)
+                              },
+                            },
+                          },
+                          [
+                            _vm._v(
+                              "\n            " + _vm._s(page) + "\n            "
+                            ),
+                          ]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          attrs: {
+                            disabled: _vm.pages.current === _vm.pages.last,
+                          },
+                          on: {
+                            click: function ($event) {
+                              return _vm.printPosts(_vm.pages.current + 1)
+                            },
+                          },
+                        },
+                        [_vm._v("Next Page")]
+                      ),
+                    ],
+                    2
                   )
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    attrs: { disabled: _vm.pages.current === _vm.pages.last },
-                    on: {
-                      click: function ($event) {
-                        return _vm.printPosts(_vm.pages.current + 1)
-                      },
-                    },
-                  },
-                  [_vm._v("Next Page")]
-                ),
-              ],
-              2
-            )
-          : _c("div", [_c("Loading")], 1),
+                : _c("div", [_c("Loading")], 1),
+            ])
+          : _c("div", [_c("h3", [_vm._v(_vm._s(_vm.error_msg))])]),
       ]),
       _vm._v(" "),
       _c("Sidebar", {
         attrs: { tags: _vm.tags, categories: _vm.categories },
-        on: { getPostBy: _vm.getPostBy },
+        on: {
+          getPostByCateg: _vm.getPostByCateg,
+          getPostByTag: _vm.getPostByTag,
+        },
       }),
     ],
     1
@@ -4602,7 +4658,7 @@ var render = function () {
               key: "categ" + category.id,
               on: {
                 click: function ($event) {
-                  return _vm.$emit("getPostBy", category.slug)
+                  return _vm.$emit("getPostByCateg", category.slug)
                 },
               },
             },
@@ -4626,7 +4682,7 @@ var render = function () {
               key: "tag" + tag.id,
               on: {
                 click: function ($event) {
-                  return _vm.$emit("getPostBy", tag.slug)
+                  return _vm.$emit("getPostByTag", tag.slug)
                 },
               },
             },

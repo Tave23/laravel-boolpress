@@ -27,6 +27,6 @@ h2{
 }
 
 main{
-   height: 50vw;
+   min-height: 60vw;
 }
 </style>

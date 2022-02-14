@@ -5,7 +5,7 @@
             <h4>Categorie</h4>
             <span
             v-for="category in categories" :key="`categ${category.id}`"
-            @click="$emit('getPostBy', category.slug )">
+            @click="$emit('getPostByCateg', category.slug )">
                {{category.name}}
             </span>
          </div>
@@ -13,7 +13,7 @@
             <h4>Tags</h4>
             <span
             v-for="tag in tags" :key="`tag${tag.id}`"
-            @click="$emit('getPostBy', tag.slug )">
+            @click="$emit('getPostByTag', tag.slug )">
                {{tag.name}}
             </span>
          </div>

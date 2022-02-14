@@ -4,40 +4,49 @@
       <!-- lato sx per lista posts -->
       <div class="blog-side">
 
-         <h3>Ecco la lista dei Post</h3>
+         <div
+         v-if="success">
 
-         <div v-if="posts">
+            <h3>{{ title }}</h3>
 
-            <SinglePost 
-            v-for="post in posts"
-            :key="`post${post.id}`"
-            :post="post"
-            />
+            <div v-if="posts">
 
-            <!-- bottone pagina precedente -->
-            <button
-            @click="printPosts(pages.current - 1)"
-            :disabled="pages.current === 1"
-            >Prev Page</button>
+               <SinglePost 
+               v-for="post in posts"
+               :key="`post${post.id}`"
+               :post="post"
+               />
 
-            <!-- bottoni nuemri pagine -->
-            <button
-            v-for="page in pages.last"
-            :key="`buttons ${page}`"
-            @click="printPosts(page)"
-            :disabled="pages.current === page">
-            {{page}}
-            </button>
+               <!-- bottone pagina precedente -->
+               <button
+               @click="printPosts(pages.current - 1)"
+               :disabled="pages.current === 1"
+               >Prev Page</button>
 
-            <!-- bottone pagina successiva -->
-            <button
-            @click="printPosts(pages.current + 1)"
-            :disabled="pages.current === pages.last"
-            >Next Page</button>
+               <!-- bottoni nuemri pagine -->
+               <button
+               v-for="page in pages.last"
+               :key="`buttons ${page}`"
+               @click="printPosts(page)"
+               :disabled="pages.current === page">
+               {{page}}
+               </button>
+
+               <!-- bottone pagina successiva -->
+               <button
+               @click="printPosts(pages.current + 1)"
+               :disabled="pages.current === pages.last"
+               >Next Page</button>
+            </div>
+            
+            <div v-else>
+               <Loading />
+            </div>
+
          </div>
-         
+
          <div v-else>
-            <Loading />
+            <h3>{{error_msg}}</h3>
          </div>
 
       </div>
@@ -45,7 +54,8 @@
       <Sidebar 
       :tags="tags"
       :categories="categories"
-      @getPostBy="getPostBy"
+      @getPostByCateg="getPostByCateg"
+      @getPostByTag="getPostByTag"
       />
    </div>
 </template>
@@ -71,21 +81,49 @@ export default {
          pages: {},
          tags: [],
          categories:[],
+         success: true,
+         error_msg: '',
+         title: 'Ecco la lista dei Post'
       }
    },
    mounted(){
       this.printPosts();
    },
    methods:{
-      getPostBy(slug_category){
+      getPostByCateg(slug_category){
+         this.reset();
          console.log(slug_category);
          axios.get(this.urlApi + '/category/' + slug_category)
          .then(response => {
-            console.log(response.data.category.posts);
+            // console.log(response.data.category.posts);
             this.posts = response.data.category.posts
+            this.title = 'Ecco i post con la categoria: ' + response.data.category.name
+
+            if (!response.data.success) {
+               this.success = false;
+               this.error_msg = response.data.console.error();
+            }
+
+         })
+      },
+      getPostByTag(slug_tag){
+         this.reset();
+         console.log(slug_tag);
+         axios.get(this.urlApi + '/tag/' + slug_tag)
+         .then(response => {
+            // console.log(response.data.category.posts);
+            this.posts = response.data.tag.posts
+            this.title = 'Ecco i post con il tag: ' + response.data.tag.name
+
+            if (!response.data.success) {
+               this.success = false;
+               this.error_msg = response.data.console.error();
+            }
+
          })
       },
       printPosts(page = 1){
+         this.reset();
          axios.get(this.urlApi + this.pagination + page)
          .then(result => {
             // stampo i post
@@ -101,6 +139,12 @@ export default {
                last : result.data.posts.last_page
             }
          })
+      },
+      reset(){
+         this.success = true;
+         this.error_msg = '';
+         this.posts = null;
+         this.title = 'Ecco la lista dei Post'
       }
    }
 }
