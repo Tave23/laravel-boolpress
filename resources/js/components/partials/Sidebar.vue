@@ -27,7 +27,7 @@ export default {
 <style lang="scss" scoped>
 
 .sidebar{
-   width: 30%;
+   width: 20%;
    margin:35px 0 0 15px;
    .categories, .tags{
       height: 30%;
@@ -38,6 +38,19 @@ export default {
    }
    .categories{
       margin-bottom: 10px;
+   }
+   span{
+      display: inline-block;
+      background-color: lightseagreen;
+      padding: 2px 5px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover{
+         color: white;
+         background-color: rgb(41, 223, 214);
+         transition: 0.3s;
+      }
    }
 }
 </style>

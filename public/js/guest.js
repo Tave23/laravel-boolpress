@@ -2415,7 +2415,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "h3[data-v-4ac4d2f8] {\n  padding: 35px 0;\n}\n.container[data-v-4ac4d2f8] {\n  width: 65%;\n  margin: 10px auto 0;\n  display: flex;\n}\n.container .blog-side[data-v-4ac4d2f8] {\n  width: 70%;\n}\n.container button[data-v-4ac4d2f8] {\n  margin: 20px 10px;\n  background-color: lightseagreen;\n  border: 1px solid black;\n  padding: 5px;\n  border-radius: 10px;\n}\n.container button[data-v-4ac4d2f8]:hover {\n  background-color: #005252;\n  color: white;\n  transition: all 0.3s;\n}\n.container button[data-v-4ac4d2f8]:disabled {\n  background-color: lightgrey;\n  color: black;\n}", ""]);
+exports.push([module.i, "h3[data-v-4ac4d2f8] {\n  padding: 35px 0;\n}\n.container[data-v-4ac4d2f8] {\n  width: 65%;\n  margin: 10px auto 0;\n  display: flex;\n}\n.container .blog-side[data-v-4ac4d2f8] {\n  width: 80%;\n}\n.container button[data-v-4ac4d2f8] {\n  margin: 20px 10px;\n  background-color: lightseagreen;\n  border: 1px solid black;\n  padding: 5px;\n  border-radius: 10px;\n}\n.container button[data-v-4ac4d2f8]:hover {\n  background-color: #005252;\n  color: white;\n  transition: all 0.3s;\n}\n.container button[data-v-4ac4d2f8]:disabled {\n  background-color: lightgrey;\n  color: black;\n}", ""]);
 
 // exports
 
@@ -2586,7 +2586,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".sidebar[data-v-438bbc0a] {\n  width: 30%;\n  margin: 35px 0 0 15px;\n}\n.sidebar .categories[data-v-438bbc0a], .sidebar .tags[data-v-438bbc0a] {\n  height: 30%;\n  width: 100%;\n  border: 2px solid lightseagreen;\n  border-radius: 15px;\n  padding: 10px;\n}\n.sidebar .categories[data-v-438bbc0a] {\n  margin-bottom: 10px;\n}", ""]);
+exports.push([module.i, ".sidebar[data-v-438bbc0a] {\n  width: 20%;\n  margin: 35px 0 0 15px;\n}\n.sidebar .categories[data-v-438bbc0a], .sidebar .tags[data-v-438bbc0a] {\n  height: 30%;\n  width: 100%;\n  border: 2px solid lightseagreen;\n  border-radius: 15px;\n  padding: 10px;\n}\n.sidebar .categories[data-v-438bbc0a] {\n  margin-bottom: 10px;\n}\n.sidebar span[data-v-438bbc0a] {\n  display: inline-block;\n  background-color: lightseagreen;\n  padding: 2px 5px;\n  margin: 5px;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.sidebar span[data-v-438bbc0a]:hover {\n  color: white;\n  background-color: #29dfd6;\n  transition: 0.3s;\n}", ""]);
 
 // exports
 

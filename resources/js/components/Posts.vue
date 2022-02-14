@@ -95,7 +95,7 @@ h3{
    margin: 10px auto 0;
    display: flex;
    .blog-side{
-      width: 70%;
+      width: 80%;
    }
    button{
       margin: 20px 10px;
