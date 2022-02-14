@@ -1988,6 +1988,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2370,7 +2394,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "h3[data-v-4ac4d2f8] {\n  padding: 35px 0;\n}\n.container[data-v-4ac4d2f8] {\n  width: 65%;\n  margin: 0 auto;\n}\n.container button[data-v-4ac4d2f8] {\n  margin: 20px 10px;\n  background-color: lightseagreen;\n  border: 1px solid black;\n  padding: 5px;\n  border-radius: 10px;\n}\n.container button[data-v-4ac4d2f8]:hover {\n  background-color: #005252;\n  color: white;\n  transition: all 0.3s;\n}\n.container button[data-v-4ac4d2f8]:disabled {\n  background-color: lightgrey;\n  color: black;\n}", ""]);
+exports.push([module.i, "h3[data-v-4ac4d2f8] {\n  padding: 35px 0;\n}\n.container[data-v-4ac4d2f8] {\n  width: 65%;\n  margin: 10px auto 0;\n  display: flex;\n}\n.container .blog-side[data-v-4ac4d2f8] {\n  width: 70%;\n}\n.container .sidebar[data-v-4ac4d2f8] {\n  width: 30%;\n  margin: 35px 0 0 15px;\n}\n.container .sidebar .categories[data-v-4ac4d2f8], .container .sidebar .tags[data-v-4ac4d2f8] {\n  height: 30%;\n  width: 100%;\n  border: 2px solid lightseagreen;\n  border-radius: 15px;\n  padding: 10px;\n}\n.container .sidebar .categories[data-v-4ac4d2f8] {\n  margin-bottom: 10px;\n}\n.container button[data-v-4ac4d2f8] {\n  margin: 20px 10px;\n  background-color: lightseagreen;\n  border: 1px solid black;\n  padding: 5px;\n  border-radius: 10px;\n}\n.container button[data-v-4ac4d2f8]:hover {\n  background-color: #005252;\n  color: white;\n  transition: all 0.3s;\n}\n.container button[data-v-4ac4d2f8]:disabled {\n  background-color: lightgrey;\n  color: black;\n}", ""]);
 
 // exports
 
@@ -2522,7 +2546,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h2[data-v-a7bce10a] {\n  text-align: center;\n  margin-top: 20px;\n}\nmain[data-v-a7bce10a] {\n  overflow-y: scroll;\n  height: 50vw;\n}", ""]);
+exports.push([module.i, "h2[data-v-a7bce10a] {\n  text-align: center;\n  margin-top: 20px;\n}\nmain[data-v-a7bce10a] {\n  height: 50vw;\n}", ""]);
 
 // exports
 
@@ -4005,67 +4029,102 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("h3", [_vm._v("Ecco la lista dei Post")]),
-    _vm._v(" "),
-    _vm.posts
-      ? _c(
-          "div",
-          [
-            _vm._l(_vm.posts, function (post) {
-              return _c("SinglePost", {
-                key: "post" + post.id,
-                attrs: { post: post },
-              })
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                attrs: { disabled: _vm.pages.current === 1 },
-                on: {
-                  click: function ($event) {
-                    return _vm.printPosts(_vm.pages.current - 1)
-                  },
-                },
-              },
-              [_vm._v("Prev Page")]
-            ),
-            _vm._v(" "),
-            _vm._l(_vm.pages.last, function (page) {
-              return _c(
+    _c("div", { staticClass: "blog-side" }, [
+      _c("h3", [_vm._v("Ecco la lista dei Post")]),
+      _vm._v(" "),
+      _vm.posts
+        ? _c(
+            "div",
+            [
+              _vm._l(_vm.posts, function (post) {
+                return _c("SinglePost", {
+                  key: "post" + post.id,
+                  attrs: { post: post },
+                })
+              }),
+              _vm._v(" "),
+              _c(
                 "button",
                 {
-                  key: "buttons " + page,
-                  attrs: { disabled: _vm.pages.current === page },
+                  attrs: { disabled: _vm.pages.current === 1 },
                   on: {
                     click: function ($event) {
-                      return _vm.printPosts(page)
+                      return _vm.printPosts(_vm.pages.current - 1)
                     },
                   },
                 },
-                [_vm._v("\n      " + _vm._s(page) + "\n      ")]
-              )
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                attrs: { disabled: _vm.pages.current === _vm.pages.last },
-                on: {
-                  click: function ($event) {
-                    return _vm.printPosts(_vm.pages.current + 1)
+                [_vm._v("Prev Page")]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.pages.last, function (page) {
+                return _c(
+                  "button",
+                  {
+                    key: "buttons " + page,
+                    attrs: { disabled: _vm.pages.current === page },
+                    on: {
+                      click: function ($event) {
+                        return _vm.printPosts(page)
+                      },
+                    },
+                  },
+                  [_vm._v("\n         " + _vm._s(page) + "\n         ")]
+                )
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  attrs: { disabled: _vm.pages.current === _vm.pages.last },
+                  on: {
+                    click: function ($event) {
+                      return _vm.printPosts(_vm.pages.current + 1)
+                    },
                   },
                 },
-              },
-              [_vm._v("Next Page")]
-            ),
-          ],
-          2
-        )
-      : _c("div", [_c("Loading")], 1),
+                [_vm._v("Next Page")]
+              ),
+            ],
+            2
+          )
+        : _c("div", [_c("Loading")], 1),
+    ]),
+    _vm._v(" "),
+    _vm._m(0),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "sidebar" }, [
+      _c("div", { staticClass: "categories" }, [
+        _c("span", [_vm._v("1")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("2")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("3")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("4")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("5")]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "tags" }, [
+        _c("span", [_vm._v("1")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("2")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("3")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("4")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("5")]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 

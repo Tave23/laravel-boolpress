@@ -27,7 +27,6 @@ h2{
 }
 
 main{
-   overflow-y: scroll;
    height: 50vw;
 }
 </style>

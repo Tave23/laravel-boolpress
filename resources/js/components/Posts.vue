@@ -1,39 +1,63 @@
 <template>
    <div class="container">
-      <h3>Ecco la lista dei Post</h3>
 
-      <div v-if="posts">
+      <!-- lato sx per lista posts -->
+      <div class="blog-side">
 
-         <SinglePost 
-         v-for="post in posts"
-         :key="`post${post.id}`"
-         :post="post"
-         />
+         <h3>Ecco la lista dei Post</h3>
 
-         <!-- bottone pagina precedente -->
-         <button
-         @click="printPosts(pages.current - 1)"
-         :disabled="pages.current === 1"
-         >Prev Page</button>
+         <div v-if="posts">
 
-         <!-- bottoni nuemri pagine -->
-         <button
-         v-for="page in pages.last"
-         :key="`buttons ${page}`"
-         @click="printPosts(page)"
-         :disabled="pages.current === page">
-         {{page}}
-         </button>
+            <SinglePost 
+            v-for="post in posts"
+            :key="`post${post.id}`"
+            :post="post"
+            />
 
-         <!-- bottone pagina successiva -->
-         <button
-         @click="printPosts(pages.current + 1)"
-         :disabled="pages.current === pages.last"
-         >Next Page</button>
+            <!-- bottone pagina precedente -->
+            <button
+            @click="printPosts(pages.current - 1)"
+            :disabled="pages.current === 1"
+            >Prev Page</button>
+
+            <!-- bottoni nuemri pagine -->
+            <button
+            v-for="page in pages.last"
+            :key="`buttons ${page}`"
+            @click="printPosts(page)"
+            :disabled="pages.current === page">
+            {{page}}
+            </button>
+
+            <!-- bottone pagina successiva -->
+            <button
+            @click="printPosts(pages.current + 1)"
+            :disabled="pages.current === pages.last"
+            >Next Page</button>
+         </div>
+         
+         <div v-else>
+            <Loading />
+         </div>
+
       </div>
-      
-      <div v-else>
-         <Loading />
+
+      <!-- sidebar -->
+      <div class="sidebar">
+         <div class="categories">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+         </div>
+         <div class="tags">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+         </div>
       </div>
 
    </div>
@@ -83,7 +107,25 @@ h3{
 
 .container{
    width: 65%;
-   margin: 0 auto;
+   margin: 10px auto 0;
+   display: flex;
+   .blog-side{
+      width: 70%;
+   }
+   .sidebar{
+      width: 30%;
+      margin:35px 0 0 15px;
+      .categories, .tags{
+         height: 30%;
+         width: 100%;
+         border: 2px solid lightseagreen;
+         border-radius: 15px;
+         padding: 10px;
+      }
+      .categories{
+         margin-bottom: 10px;
+      }
+   }
    button{
       margin: 20px 10px;
       background-color: lightseagreen;
