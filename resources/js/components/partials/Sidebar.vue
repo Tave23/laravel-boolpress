@@ -17,6 +17,10 @@
                {{tag.name}}
             </span>
          </div>
+         <button
+         @click="$emit('resetPosts')">
+            Torna all'elenco completo dei post
+         </button>
       </div>
 </template>
 
@@ -60,6 +64,20 @@ export default {
          color: white;
          background-color: rgb(41, 223, 214);
          transition: 0.3s;
+      }
+   }
+   button{
+      margin-top: 10px;
+      padding: 3px 5px;
+      background-color: rgb(16, 90, 86);
+      color: white;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      &:hover{
+         background-color: lightseagreen;
+         color: black;
+         transition: 0.2s;
       }
    }
 }

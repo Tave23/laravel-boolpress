@@ -2010,6 +2010,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2030,7 +2036,8 @@ __webpack_require__.r(__webpack_exports__);
       categories: [],
       success: true,
       error_msg: '',
-      title: 'Ecco la lista dei Post'
+      title: 'Ecco la lista completa dei Post',
+      basic_posts: true
     };
   },
   mounted: function mounted() {
@@ -2046,6 +2053,7 @@ __webpack_require__.r(__webpack_exports__);
         // console.log(response.data.category.posts);
         _this.posts = response.data.category.posts;
         _this.title = 'Ecco i post con la categoria: ' + response.data.category.name;
+        _this.basic_posts = false;
 
         if (!response.data.success) {
           _this.success = false;
@@ -2062,6 +2070,7 @@ __webpack_require__.r(__webpack_exports__);
         // console.log(response.data.category.posts);
         _this2.posts = response.data.tag.posts;
         _this2.title = 'Ecco i post con il tag: ' + response.data.tag.name;
+        _this2.basic_posts = false;
 
         if (!response.data.success) {
           _this2.success = false;
@@ -2093,7 +2102,7 @@ __webpack_require__.r(__webpack_exports__);
       this.success = true;
       this.error_msg = '';
       this.posts = null;
-      this.title = 'Ecco la lista dei Post';
+      this.title = 'Ecco la lista completa dei Post', this.basic_posts = true;
     }
   }
 });
@@ -2421,6 +2430,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Sidebar",
   props: {
@@ -2657,7 +2670,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".sidebar[data-v-438bbc0a] {\n  width: 20%;\n  margin: 35px 0 0 15px;\n}\n.sidebar .categories[data-v-438bbc0a], .sidebar .tags[data-v-438bbc0a] {\n  height: 30%;\n  min-height: 150px;\n  width: 100%;\n  border: 2px solid lightseagreen;\n  border-radius: 15px;\n  padding: 10px;\n}\n.sidebar .categories[data-v-438bbc0a] {\n  margin-bottom: 10px;\n}\n.sidebar h4[data-v-438bbc0a] {\n  padding: 3px 5px;\n}\n.sidebar span[data-v-438bbc0a] {\n  display: inline-block;\n  background-color: lightseagreen;\n  padding: 3px 5px;\n  margin: 5px;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.sidebar span[data-v-438bbc0a]:hover {\n  color: white;\n  background-color: #29dfd6;\n  transition: 0.3s;\n}", ""]);
+exports.push([module.i, ".sidebar[data-v-438bbc0a] {\n  width: 20%;\n  margin: 35px 0 0 15px;\n}\n.sidebar .categories[data-v-438bbc0a], .sidebar .tags[data-v-438bbc0a] {\n  height: 30%;\n  min-height: 150px;\n  width: 100%;\n  border: 2px solid lightseagreen;\n  border-radius: 15px;\n  padding: 10px;\n}\n.sidebar .categories[data-v-438bbc0a] {\n  margin-bottom: 10px;\n}\n.sidebar h4[data-v-438bbc0a] {\n  padding: 3px 5px;\n}\n.sidebar span[data-v-438bbc0a] {\n  display: inline-block;\n  background-color: lightseagreen;\n  padding: 3px 5px;\n  margin: 5px;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.sidebar span[data-v-438bbc0a]:hover {\n  color: white;\n  background-color: #29dfd6;\n  transition: 0.3s;\n}\n.sidebar button[data-v-438bbc0a] {\n  margin-top: 10px;\n  padding: 3px 5px;\n  background-color: #105a56;\n  color: white;\n  border-radius: 10px;\n  border: none;\n  cursor: pointer;\n}\n.sidebar button[data-v-438bbc0a]:hover {\n  background-color: lightseagreen;\n  color: black;\n  transition: 0.2s;\n}", ""]);
 
 // exports
 
@@ -4189,53 +4202,71 @@ var render = function () {
                         })
                       }),
                       _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          attrs: { disabled: _vm.pages.current === 1 },
-                          on: {
-                            click: function ($event) {
-                              return _vm.printPosts(_vm.pages.current - 1)
-                            },
-                          },
-                        },
-                        [_vm._v("Prev Page")]
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.pages.last, function (page) {
-                        return _c(
-                          "button",
-                          {
-                            key: "buttons " + page,
-                            attrs: { disabled: _vm.pages.current === page },
-                            on: {
-                              click: function ($event) {
-                                return _vm.printPosts(page)
-                              },
-                            },
-                          },
-                          [
-                            _vm._v(
-                              "\n            " + _vm._s(page) + "\n            "
-                            ),
-                          ]
-                        )
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          attrs: {
-                            disabled: _vm.pages.current === _vm.pages.last,
-                          },
-                          on: {
-                            click: function ($event) {
-                              return _vm.printPosts(_vm.pages.current + 1)
-                            },
-                          },
-                        },
-                        [_vm._v("Next Page")]
-                      ),
+                      _vm.basic_posts
+                        ? _c(
+                            "div",
+                            { staticClass: "pagination" },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  attrs: { disabled: _vm.pages.current === 1 },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.printPosts(
+                                        _vm.pages.current - 1
+                                      )
+                                    },
+                                  },
+                                },
+                                [_vm._v("Prev Page")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.pages.last, function (page) {
+                                return _c(
+                                  "button",
+                                  {
+                                    key: "buttons " + page,
+                                    attrs: {
+                                      disabled: _vm.pages.current === page,
+                                    },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.printPosts(page)
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n               " +
+                                        _vm._s(page) +
+                                        "\n               "
+                                    ),
+                                  ]
+                                )
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  attrs: {
+                                    disabled:
+                                      _vm.pages.current === _vm.pages.last,
+                                  },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.printPosts(
+                                        _vm.pages.current + 1
+                                      )
+                                    },
+                                  },
+                                },
+                                [_vm._v("Next Page")]
+                              ),
+                            ],
+                            2
+                          )
+                        : _vm._e(),
                     ],
                     2
                   )
@@ -4249,6 +4280,7 @@ var render = function () {
         on: {
           getPostByCateg: _vm.getPostByCateg,
           getPostByTag: _vm.getPostByTag,
+          resetPosts: _vm.printPosts,
         },
       }),
     ],
@@ -4691,6 +4723,18 @@ var render = function () {
         }),
       ],
       2
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        on: {
+          click: function ($event) {
+            return _vm.$emit("resetPosts")
+          },
+        },
+      },
+      [_vm._v("\n         Torna all'elenco completo dei post\n      ")]
     ),
   ])
 }

@@ -17,26 +17,31 @@
                :post="post"
                />
 
-               <!-- bottone pagina precedente -->
-               <button
-               @click="printPosts(pages.current - 1)"
-               :disabled="pages.current === 1"
-               >Prev Page</button>
+               <div v-if="basic_posts"
+               class="pagination">
 
-               <!-- bottoni nuemri pagine -->
-               <button
-               v-for="page in pages.last"
-               :key="`buttons ${page}`"
-               @click="printPosts(page)"
-               :disabled="pages.current === page">
-               {{page}}
-               </button>
+                  <!-- bottone pagina precedente -->
+                  <button
+                  @click="printPosts(pages.current - 1)"
+                  :disabled="pages.current === 1"
+                  >Prev Page</button>
 
-               <!-- bottone pagina successiva -->
-               <button
-               @click="printPosts(pages.current + 1)"
-               :disabled="pages.current === pages.last"
-               >Next Page</button>
+                  <!-- bottoni nuemri pagine -->
+                  <button
+                  v-for="page in pages.last"
+                  :key="`buttons ${page}`"
+                  @click="printPosts(page)"
+                  :disabled="pages.current === page">
+                  {{page}}
+                  </button>
+
+                  <!-- bottone pagina successiva -->
+                  <button
+                  @click="printPosts(pages.current + 1)"
+                  :disabled="pages.current === pages.last"
+                  >Next Page</button>
+               
+               </div>
             </div>
             
             <div v-else>
@@ -56,6 +61,7 @@
       :categories="categories"
       @getPostByCateg="getPostByCateg"
       @getPostByTag="getPostByTag"
+      @resetPosts="printPosts"
       />
    </div>
 </template>
@@ -83,7 +89,8 @@ export default {
          categories:[],
          success: true,
          error_msg: '',
-         title: 'Ecco la lista dei Post'
+         title: 'Ecco la lista completa dei Post',
+         basic_posts: true
       }
    },
    mounted(){
@@ -98,6 +105,7 @@ export default {
             // console.log(response.data.category.posts);
             this.posts = response.data.category.posts
             this.title = 'Ecco i post con la categoria: ' + response.data.category.name
+            this.basic_posts = false
 
             if (!response.data.success) {
                this.success = false;
@@ -114,6 +122,7 @@ export default {
             // console.log(response.data.category.posts);
             this.posts = response.data.tag.posts
             this.title = 'Ecco i post con il tag: ' + response.data.tag.name
+            this.basic_posts = false
 
             if (!response.data.success) {
                this.success = false;
@@ -144,7 +153,8 @@ export default {
          this.success = true;
          this.error_msg = '';
          this.posts = null;
-         this.title = 'Ecco la lista dei Post'
+         this.title = 'Ecco la lista completa dei Post',
+         this.basic_posts = true
       }
    }
 }
