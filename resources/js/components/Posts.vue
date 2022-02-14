@@ -42,24 +42,7 @@
 
       </div>
 
-      <!-- sidebar -->
-      <div class="sidebar">
-         <div class="categories">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-         </div>
-         <div class="tags">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-         </div>
-      </div>
-
+      <Sidebar />
    </div>
 </template>
 
@@ -67,12 +50,14 @@
 
 import SinglePost from './partials/SinglePost.vue';
 import Loading from './partials/Loading.vue';
+import Sidebar from './partials/Sidebar.vue';
 
 export default {
    name: "Posts",
    components:{
       SinglePost,
-      Loading
+      Loading,
+      Sidebar
    },
    data(){
       return{
@@ -111,20 +96,6 @@ h3{
    display: flex;
    .blog-side{
       width: 70%;
-   }
-   .sidebar{
-      width: 30%;
-      margin:35px 0 0 15px;
-      .categories, .tags{
-         height: 30%;
-         width: 100%;
-         border: 2px solid lightseagreen;
-         border-radius: 15px;
-         padding: 10px;
-      }
-      .categories{
-         margin-bottom: 10px;
-      }
    }
    button{
       margin: 20px 10px;
