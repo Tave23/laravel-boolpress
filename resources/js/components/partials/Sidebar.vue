@@ -3,13 +3,15 @@
       <div class="sidebar">
          <div class="categories">
             <span
-            v-for="category in categories" :key="`categ${category.id}`">
+            v-for="category in categories" :key="`categ${category.id}`"
+            @click="$emit('getPostByCategory', category.slug )">
                {{category.name}}
             </span>
          </div>
          <div class="tags">
             <span
-            v-for="tag in tags" :key="`tag${tag.id}`">
+            v-for="tag in tags" :key="`tag${tag.id}`"
+            @click="$emit('getPostByCategory', tag.slug )">
                {{tag.name}}
             </span>
          </div>
@@ -44,7 +46,7 @@ export default {
    span{
       display: inline-block;
       background-color: lightseagreen;
-      padding: 2px 5px;
+      padding: 3px 5px;
       margin: 5px;
       border-radius: 5px;
       cursor: pointer;

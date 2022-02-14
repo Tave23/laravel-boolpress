@@ -38,8 +38,18 @@ class PostController extends Controller
     public function PostByCategory($slug_categ){
 
         $category = Category::where('slug', $slug_categ)->with('posts.tags')->first();
+        $success = true;
+        $error_msg = '';
 
-        return response()->json($category);
+        if (!$category) {
+            $success = false;
+            $error_msg = 'Categoria non esistente';
+        }elseif ($category && count($category['posts']) === 0) {
+            $success = false;
+            $error_msg = 'Nessun post esistente con questa categoria';
+        }
+
+        return response()->json(compact('category', 'success', 'error_msg'));
     }
 
 
@@ -48,6 +58,17 @@ class PostController extends Controller
 
         $tag = Tag::where('slug', $slug_tag)->with('posts.category')->first();
 
-        return response()->json($tag);
+        $success = true;
+        $error_msg = '';
+
+        if (!$tag) {
+            $success = false;
+            $error_msg = 'Tag non esistente';
+        }elseif ($tag && count($tag['posts']) === 0) {
+            $success = false;
+            $error_msg = 'Nessun post esistente con questo tag';
+        }
+
+        return response()->json(compact('tag', 'success', 'error_msg'));
     }
 }

@@ -45,7 +45,7 @@
       <Sidebar 
       :tags="tags"
       :categories="categories"
-      
+      @getPostByCategory="getPostByCategory"
       />
    </div>
 </template>
@@ -77,6 +77,9 @@ export default {
       this.printPosts();
    },
    methods:{
+      getPostByCategory(slug_category){
+         console.log(slug_category);
+      },
       printPosts(page = 1){
          axios.get(this.urlApi + this.paginatation + page)
          .then(result => {
