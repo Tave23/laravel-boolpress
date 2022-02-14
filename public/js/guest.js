@@ -2614,7 +2614,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".sidebar[data-v-438bbc0a] {\n  width: 20%;\n  margin: 35px 0 0 15px;\n}\n.sidebar .categories[data-v-438bbc0a], .sidebar .tags[data-v-438bbc0a] {\n  height: 30%;\n  min-height: 150px;\n  width: 100%;\n  border: 2px solid lightseagreen;\n  border-radius: 15px;\n  padding: 10px;\n}\n.sidebar .categories[data-v-438bbc0a] {\n  margin-bottom: 10px;\n}\n.sidebar span[data-v-438bbc0a] {\n  display: inline-block;\n  background-color: lightseagreen;\n  padding: 3px 5px;\n  margin: 5px;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.sidebar span[data-v-438bbc0a]:hover {\n  color: white;\n  background-color: #29dfd6;\n  transition: 0.3s;\n}", ""]);
+exports.push([module.i, ".sidebar[data-v-438bbc0a] {\n  width: 20%;\n  margin: 35px 0 0 15px;\n}\n.sidebar .categories[data-v-438bbc0a], .sidebar .tags[data-v-438bbc0a] {\n  height: 30%;\n  min-height: 150px;\n  width: 100%;\n  border: 2px solid lightseagreen;\n  border-radius: 15px;\n  padding: 10px;\n}\n.sidebar .categories[data-v-438bbc0a] {\n  margin-bottom: 10px;\n}\n.sidebar h4[data-v-438bbc0a] {\n  padding: 3px 5px;\n}\n.sidebar span[data-v-438bbc0a] {\n  display: inline-block;\n  background-color: lightseagreen;\n  padding: 3px 5px;\n  margin: 5px;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.sidebar span[data-v-438bbc0a]:hover {\n  color: white;\n  background-color: #29dfd6;\n  transition: 0.3s;\n}", ""]);
 
 // exports
 

@@ -46,6 +46,9 @@ export default {
    .categories{
       margin-bottom: 10px;
    }
+   h4{
+      padding: 3px 5px;
+   }
    span{
       display: inline-block;
       background-color: lightseagreen;
