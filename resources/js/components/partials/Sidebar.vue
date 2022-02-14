@@ -2,16 +2,18 @@
    <!-- sidebar -->
       <div class="sidebar">
          <div class="categories">
+            <h4>Categorie</h4>
             <span
             v-for="category in categories" :key="`categ${category.id}`"
-            @click="$emit('getPostByCategory', category.slug )">
+            @click="$emit('getPostBy', category.slug )">
                {{category.name}}
             </span>
          </div>
          <div class="tags">
+            <h4>Tags</h4>
             <span
             v-for="tag in tags" :key="`tag${tag.id}`"
-            @click="$emit('getPostByCategory', tag.slug )">
+            @click="$emit('getPostBy', tag.slug )">
                {{tag.name}}
             </span>
          </div>
@@ -35,6 +37,7 @@ export default {
    margin:35px 0 0 15px;
    .categories, .tags{
       height: 30%;
+      min-height: 150px;
       width: 100%;
       border: 2px solid lightseagreen;
       border-radius: 15px;

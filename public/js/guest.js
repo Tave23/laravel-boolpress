@@ -2013,7 +2013,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       urlApi: 'http://127.0.0.1:8000/api/posts',
-      paginatation: '?page=',
+      pagination: '?page=',
       posts: null,
       pages: {},
       tags: [],
@@ -2024,23 +2024,29 @@ __webpack_require__.r(__webpack_exports__);
     this.printPosts();
   },
   methods: {
-    getPostByCategory: function getPostByCategory(slug_category) {
-      console.log(slug_category);
-    },
-    printPosts: function printPosts() {
+    getPostBy: function getPostBy(slug_category) {
       var _this = this;
 
+      console.log(slug_category);
+      axios.get(this.urlApi + '/category/' + slug_category).then(function (response) {
+        console.log(response.data.category.posts);
+        _this.posts = response.data.category.posts;
+      });
+    },
+    printPosts: function printPosts() {
+      var _this2 = this;
+
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get(this.urlApi + this.paginatation + page).then(function (result) {
+      axios.get(this.urlApi + this.pagination + page).then(function (result) {
         // stampo i post
-        _this.posts = result.data.posts.data; // stampo i tags
+        _this2.posts = result.data.posts.data; // stampo i tags
 
-        _this.tags = result.data.tags; // stampo le categories
+        _this2.tags = result.data.tags; // stampo le categories
 
-        _this.categories = result.data.categories;
-        console.log(_this.tags, _this.categories); // console.log(result.data.posts);
+        _this2.categories = result.data.categories;
+        console.log(_this2.tags, _this2.categories); // console.log(result.data.posts);
 
-        _this.pages = {
+        _this2.pages = {
           current: result.data.posts.current_page,
           last: result.data.posts.last_page
         };
@@ -2370,6 +2376,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Sidebar",
   props: {
@@ -2606,7 +2614,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".sidebar[data-v-438bbc0a] {\n  width: 20%;\n  margin: 35px 0 0 15px;\n}\n.sidebar .categories[data-v-438bbc0a], .sidebar .tags[data-v-438bbc0a] {\n  height: 30%;\n  width: 100%;\n  border: 2px solid lightseagreen;\n  border-radius: 15px;\n  padding: 10px;\n}\n.sidebar .categories[data-v-438bbc0a] {\n  margin-bottom: 10px;\n}\n.sidebar span[data-v-438bbc0a] {\n  display: inline-block;\n  background-color: lightseagreen;\n  padding: 3px 5px;\n  margin: 5px;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.sidebar span[data-v-438bbc0a]:hover {\n  color: white;\n  background-color: #29dfd6;\n  transition: 0.3s;\n}", ""]);
+exports.push([module.i, ".sidebar[data-v-438bbc0a] {\n  width: 20%;\n  margin: 35px 0 0 15px;\n}\n.sidebar .categories[data-v-438bbc0a], .sidebar .tags[data-v-438bbc0a] {\n  height: 30%;\n  min-height: 150px;\n  width: 100%;\n  border: 2px solid lightseagreen;\n  border-radius: 15px;\n  padding: 10px;\n}\n.sidebar .categories[data-v-438bbc0a] {\n  margin-bottom: 10px;\n}\n.sidebar span[data-v-438bbc0a] {\n  display: inline-block;\n  background-color: lightseagreen;\n  padding: 3px 5px;\n  margin: 5px;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.sidebar span[data-v-438bbc0a]:hover {\n  color: white;\n  background-color: #29dfd6;\n  transition: 0.3s;\n}", ""]);
 
 // exports
 
@@ -4185,7 +4193,7 @@ var render = function () {
       _vm._v(" "),
       _c("Sidebar", {
         attrs: { tags: _vm.tags, categories: _vm.categories },
-        on: { getPostByCategory: _vm.getPostByCategory },
+        on: { getPostBy: _vm.getPostBy },
       }),
     ],
     1
@@ -4584,41 +4592,49 @@ var render = function () {
     _c(
       "div",
       { staticClass: "categories" },
-      _vm._l(_vm.categories, function (category) {
-        return _c(
-          "span",
-          {
-            key: "categ" + category.id,
-            on: {
-              click: function ($event) {
-                return _vm.$emit("getPostByCategory", category.slug)
+      [
+        _c("h4", [_vm._v("Categorie")]),
+        _vm._v(" "),
+        _vm._l(_vm.categories, function (category) {
+          return _c(
+            "span",
+            {
+              key: "categ" + category.id,
+              on: {
+                click: function ($event) {
+                  return _vm.$emit("getPostBy", category.slug)
+                },
               },
             },
-          },
-          [_vm._v("\n            " + _vm._s(category.name) + "\n         ")]
-        )
-      }),
-      0
+            [_vm._v("\n            " + _vm._s(category.name) + "\n         ")]
+          )
+        }),
+      ],
+      2
     ),
     _vm._v(" "),
     _c(
       "div",
       { staticClass: "tags" },
-      _vm._l(_vm.tags, function (tag) {
-        return _c(
-          "span",
-          {
-            key: "tag" + tag.id,
-            on: {
-              click: function ($event) {
-                return _vm.$emit("getPostByCategory", tag.slug)
+      [
+        _c("h4", [_vm._v("Tags")]),
+        _vm._v(" "),
+        _vm._l(_vm.tags, function (tag) {
+          return _c(
+            "span",
+            {
+              key: "tag" + tag.id,
+              on: {
+                click: function ($event) {
+                  return _vm.$emit("getPostBy", tag.slug)
+                },
               },
             },
-          },
-          [_vm._v("\n            " + _vm._s(tag.name) + "\n         ")]
-        )
-      }),
-      0
+            [_vm._v("\n            " + _vm._s(tag.name) + "\n         ")]
+          )
+        }),
+      ],
+      2
     ),
   ])
 }

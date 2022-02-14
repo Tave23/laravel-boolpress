@@ -45,7 +45,7 @@
       <Sidebar 
       :tags="tags"
       :categories="categories"
-      @getPostByCategory="getPostByCategory"
+      @getPostBy="getPostBy"
       />
    </div>
 </template>
@@ -66,7 +66,7 @@ export default {
    data(){
       return{
          urlApi: 'http://127.0.0.1:8000/api/posts',
-         paginatation: '?page=',
+         pagination: '?page=',
          posts: null,
          pages: {},
          tags: [],
@@ -77,11 +77,16 @@ export default {
       this.printPosts();
    },
    methods:{
-      getPostByCategory(slug_category){
+      getPostBy(slug_category){
          console.log(slug_category);
+         axios.get(this.urlApi + '/category/' + slug_category)
+         .then(response => {
+            console.log(response.data.category.posts);
+            this.posts = response.data.category.posts
+         })
       },
       printPosts(page = 1){
-         axios.get(this.urlApi + this.paginatation + page)
+         axios.get(this.urlApi + this.pagination + page)
          .then(result => {
             // stampo i post
             this.posts = result.data.posts.data;
