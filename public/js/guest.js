@@ -2467,6 +2467,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePost",
   props: {
@@ -2689,7 +2697,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h4[data-v-52028fca] {\n  margin: 25px 0 5px;\n}\n.data[data-v-52028fca] {\n  font-size: 12px;\n  font-style: italic;\n  margin-bottom: 15px;\n}\narticle a[data-v-52028fca] {\n  text-decoration: none;\n  color: black;\n}\narticle a[data-v-52028fca]:hover {\n  color: lightseagreen;\n}", ""]);
+exports.push([module.i, "h4[data-v-52028fca] {\n  margin: 25px 0 5px;\n}\n.data[data-v-52028fca] {\n  font-size: 12px;\n  font-style: italic;\n  margin-bottom: 15px;\n}\n.singlePost a[data-v-52028fca] {\n  text-decoration: none;\n  color: black;\n}\n.singlePost a[data-v-52028fca]:hover {\n  color: lightseagreen;\n}\n.singlePost[data-v-52028fca] {\n  border: 1px solid lightgray;\n  border-radius: 10px;\n  padding: 0 10px 10px;\n  display: flex;\n}\n.singlePost .image-side[data-v-52028fca] {\n  width: 30%;\n}\n.singlePost .text-side[data-v-52028fca] {\n  width: 70%;\n}", ""]);
 
 // exports
 
@@ -4760,32 +4768,41 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("article", [
-    _c("h4", [
-      _c(
-        "strong",
-        [
-          _c(
-            "router-link",
-            {
-              attrs: {
-                to: { name: "singlePostInfo", params: { slug: _vm.post.slug } },
+  return _c("div", { staticClass: "singlePost" }, [
+    _c("div", { staticClass: "image-side" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-side" }, [
+      _c("h4", [
+        _c(
+          "strong",
+          [
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: {
+                    name: "singlePostInfo",
+                    params: { slug: _vm.post.slug },
+                  },
+                },
               },
-            },
-            [
-              _vm._v(
-                "\n            " + _vm._s(_vm.post.title_post) + "\n         "
-              ),
-            ]
-          ),
-        ],
-        1
-      ),
+              [
+                _vm._v(
+                  "\n               " +
+                    _vm._s(_vm.post.title_post) +
+                    "\n            "
+                ),
+              ]
+            ),
+          ],
+          1
+        ),
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "data" }, [_vm._v(_vm._s(_vm.updateDate))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "content" }, [_vm._v(_vm._s(_vm.post.content))]),
     ]),
-    _vm._v(" "),
-    _c("p", { staticClass: "data" }, [_vm._v(_vm._s(_vm.updateDate))]),
-    _vm._v(" "),
-    _c("p", { staticClass: "content" }, [_vm._v(_vm._s(_vm.post.content))]),
   ])
 }
 var staticRenderFns = []

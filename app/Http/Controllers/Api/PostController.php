@@ -14,6 +14,16 @@ class PostController extends Controller
 
         $posts = Post::paginate(5);
 
+        // percorsi assoluti
+        $posts->each(function($post){
+
+            if ($post->cover) {
+                $post->cover = url('storage/' . $post->cover);
+            }else{
+                $post->cover = url('placeholder-image/placeholder.jpeg');
+            }
+        });
+
         $tags = Tag::all();
         $categories = Category::all();
 

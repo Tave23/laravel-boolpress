@@ -1,15 +1,23 @@
 <template>
-   <article>
-      <h4>
-         <strong>
-            <router-link :to="{name: 'singlePostInfo', params:{slug: post.slug}}">
-               {{ post.title_post }}
-            </router-link>
-         </strong>
-      </h4>
-      <p class="data">{{ updateDate }}</p>
-      <p class="content">{{ post.content }}</p>
-   </article>
+   <div class="singlePost">
+
+      <div class="image-side">
+
+      </div>
+
+      <div class="text-side">
+         <h4>
+            <strong>
+               <router-link :to="{name: 'singlePostInfo', params:{slug: post.slug}}">
+                  {{ post.title_post }}
+               </router-link>
+            </strong>
+         </h4>
+         <p class="data">{{ updateDate }}</p>
+         <p class="content">{{ post.content }}</p>
+      </div>
+
+   </div>
 </template>
 
 <script>
@@ -43,13 +51,26 @@ h4{
    font-style: italic;
    margin-bottom: 15px;
 }
-article{
+.singlePost{
    a{
       text-decoration: none;
       color: black;
       &:hover{
          color: lightseagreen;
       }
+   }
+}
+
+.singlePost{
+   border: 1px solid lightgray;
+   border-radius: 10px;
+   padding: 0 10px 10px;
+   display: flex;
+   .image-side{
+      width: 30%;
+   }
+   .text-side{
+      width: 70%;
    }
 }
 </style>
