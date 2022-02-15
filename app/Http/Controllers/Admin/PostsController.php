@@ -51,17 +51,22 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+
+        dd($request->all());
         $request->validate(
             [
                 'title_post' => 'required|min:2|max:255',
-                'content' => 'required|min:5'
+                'content' => 'required|min:5',
+                'image' => 'nullable'|'image'|'max:32000'
             ],
             [
                 'title_post.required' => "Inserire un titolo",
                 'title_post.min' => "Inserire almeno :min caratteri",
                 'title_post.max' => "Inserire meno di :max caratteri",
                 'content.required' => "Inserire il contenuto del post",
-                'content.min' => "Inserire almeno :min caratteri"
+                'content.min' => "Inserire almeno :min caratteri",
+                'image.image' => 'Devi inserire un\'immagine',
+                'image.max' => 'Il file è troppo grande'
             ]
         );
 

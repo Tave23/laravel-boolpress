@@ -84,8 +84,8 @@
 
             {{-- input image --}}
             <div class="mb-3">
-               <label for="image_post" class="form-label">Inserisci un'immagine</label>
-               <input class="form-control" type="file" name="image_post">
+               <label for="image" class="form-label">Inserisci un'immagine</label>
+               <input class="form-control" type="file" name="image" id="image">
              </div>
 
             {{-- bottoni salva e reset --}}
