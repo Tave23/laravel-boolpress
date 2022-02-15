@@ -17,7 +17,8 @@
          @endif
 
          {{-- per salvarlo fa aggiunta l'action (a store) con il metodo post e il @csrf --}}
-         <form action="{{ route('admin.posts.store') }}" class="mt-5" method="POST">
+         <form action="{{ route('admin.posts.store') }}" class="mt-5" method="POST"
+         enctype="multipart/form-data">
             @csrf
             {{-- @method('POST') --}}
 
@@ -80,6 +81,12 @@
                @endforeach
 
             </div>
+
+            {{-- input image --}}
+            <div class="mb-3">
+               <label for="image_post" class="form-label">Inserisci un'immagine</label>
+               <input class="form-control" type="file" name="image_post">
+             </div>
 
             {{-- bottoni salva e reset --}}
             <button type="submit" class="btn btn-success">Salva Post</button>

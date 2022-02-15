@@ -18,7 +18,7 @@ class Post extends Model
 
 
     // dobbiamo rempire i dati dentro l'array attraverso $fillable
-    protected $fillable = ['title_post', 'content', 'category_id'];
+    protected $fillable = ['title_post', 'content', 'category_id', 'image', 'originale_name_image'];
 
     public static function createSlug($title_post){
 

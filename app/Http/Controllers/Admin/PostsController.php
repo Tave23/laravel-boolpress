@@ -8,6 +8,7 @@ use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -63,6 +64,8 @@ class PostsController extends Controller
                 'content.min' => "Inserire almeno :min caratteri"
             ]
         );
+
+        // $img_path = Storage::put()
 
         $created_post = $request->all();
         // dd($created_post);
