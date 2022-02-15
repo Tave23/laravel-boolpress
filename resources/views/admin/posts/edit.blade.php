@@ -90,12 +90,12 @@
             {{-- input image --}}
             <div class="mb-3">
                @if ($post->image)
-                  <div>
-                     <img width="400"
+                  <div class="mb-5">
+                     <img width="150"
                      src="{{ asset('storage/' . $post->image ) }}" alt="">
                   </div>
                @endif
-               <label for="image" class="form-label">Inserisci un'immagine</label>
+               <label for="image" class="form-label">Inserisci o sostituisci l'immagine</label>
                <input class="form-control" @error('image') is-invalid @enderror
                type="file" name="image" id="image">
                {{-- messaggio di errore sotto il form --}}

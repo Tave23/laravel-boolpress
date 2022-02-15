@@ -153,18 +153,34 @@ class PostsController extends Controller
         $request->validate(
             [
                 'title_post' => 'required|min:2|max:255',
-                'content' => 'required|min:5'
+                'content' => 'required|min:5',
+                'image' => 'nullable|image'
             ],
             [
                 'title_post.required' => "Inserire un titolo",
                 'title_post.min' => "Inserire almeno :min caratteri",
                 'title_post.max' => "Inserire meno di :max caratteri",
                 'content.required' => "Inserire il contenuto del post",
-                'content.min' => "Inserire almeno :min caratteri"
+                'content.min' => "Inserire almeno :min caratteri",
+                'image.image' => "Devi inserire un'immagine",
             ]
         );
 
         $edit_data = $request->all();
+
+        if (array_key_exists('image', $edit_data )) {
+
+            // eliminare la precedente immagine
+            if ($post->image) {
+                Storage::delete($post->image);
+            }
+            
+            // prendere il nome originale dell'immagine
+            $edit_data['originale_name_image'] = $request->file('image')->getClientOriginalName();
+            // salvare image e il percorso dell'image
+            $image_route = Storage::put('uploads', $edit_data['image']);
+            $edit_data['image'] = $image_route;
+        };
 
         if ($edit_data['title_post'] != $post->title_post) {
             $edit_data['slug'] = Post::createSlug($edit_data['title_post']);
@@ -190,6 +206,11 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
+        // eliminare la precedente immagine
+        if ($post->image) {
+            Storage::delete($post->image);
+        }
+
         $post->delete();
 
         return redirect()->route('admin.posts.index')->with('deleted_post', "Il post: $post->title_post è stato eliminato.");
