@@ -31,6 +31,16 @@
          @empty
             
          @endforelse
+         
+         @if ($post->image)
+            <div class="image">
+               <img width="400"
+               src="{{ asset('storage/' . $post->image ) }}" alt="">
+               <p>{{ $post->originale_name_image }}</p>
+            </div>
+         @else 
+         
+         @endif
 
 
          {{-- contenuto del post --}}

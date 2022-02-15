@@ -17,7 +17,8 @@
          @endif
 
          {{-- per farel'update va aggiunta l'action (a update) con il metodo put e il @csrf --}}
-         <form action="{{ route('admin.posts.update', $post) }}" method="POST" class="mt-5">
+         <form action="{{ route('admin.posts.update', $post) }}" method="POST" class="mt-5"
+         enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -84,6 +85,25 @@
                </span>
                @endforeach
 
+            </div>
+
+            {{-- input image --}}
+            <div class="mb-3">
+               @if ($post->image)
+                  <div>
+                     <img width="400"
+                     src="{{ asset('storage/' . $post->image ) }}" alt="">
+                  </div>
+               @endif
+               <label for="image" class="form-label">Inserisci un'immagine</label>
+               <input class="form-control" @error('image') is-invalid @enderror
+               type="file" name="image" id="image">
+               {{-- messaggio di errore sotto il form --}}
+               @error('image')
+                  <p style="color: red">
+                     {{ $message }}!
+                  </p>
+               @enderror
             </div>
 
             {{-- bottoni salva e reset --}}

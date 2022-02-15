@@ -51,7 +51,7 @@
                   <p style="color: red">
                      {{ $message }}!
                   </p>
-              @enderror
+               @enderror
             </div>
 
             {{-- input categoria --}}
@@ -85,8 +85,15 @@
             {{-- input image --}}
             <div class="mb-3">
                <label for="image" class="form-label">Inserisci un'immagine</label>
-               <input class="form-control" type="file" name="image" id="image">
-             </div>
+               <input class="form-control" @error('image') is-invalid @enderror
+               type="file" name="image" id="image">
+                {{-- messaggio di errore sotto il form --}}
+               @error('image')
+                  <p style="color: red">
+                     {{ $message }}!
+                  </p>
+               @enderror
+            </div>
 
             {{-- bottoni salva e reset --}}
             <button type="submit" class="btn btn-success">Salva Post</button>

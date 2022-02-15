@@ -51,13 +51,11 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-
-        dd($request->all());
         $request->validate(
             [
                 'title_post' => 'required|min:2|max:255',
                 'content' => 'required|min:5',
-                'image' => 'nullable'|'image'|'max:32000'
+                'image' => 'nullable|image'
             ],
             [
                 'title_post.required' => "Inserire un titolo",
@@ -65,15 +63,25 @@ class PostsController extends Controller
                 'title_post.max' => "Inserire meno di :max caratteri",
                 'content.required' => "Inserire il contenuto del post",
                 'content.min' => "Inserire almeno :min caratteri",
-                'image.image' => 'Devi inserire un\'immagine',
-                'image.max' => 'Il file è troppo grande'
+                'image.image' => "Devi inserire un\'immagine",
             ]
         );
 
-        // $img_path = Storage::put()
-
         $created_post = $request->all();
         // dd($created_post);
+
+        // controllo input image
+        if (array_key_exists('image', $created_post )) {
+            
+            // prendere il nome originale dell'immagine
+            $created_post['originale_name_image'] = $request->file('image')->getClientOriginalName();
+            // salvare image e il percorso dell'image
+            $image_route = Storage::put('uploads', $created_post['image']);
+            $created_post['image'] = $image_route;
+        };
+
+        // $img_path = Storage::put()
+
         $new_post = new Post();
 
         // vado a riempire $new_post
