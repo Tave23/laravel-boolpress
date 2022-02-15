@@ -2241,6 +2241,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePostInfo",
   data: function data() {
@@ -2475,6 +2479,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePost",
   props: {
@@ -2602,7 +2607,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container[data-v-77cb33ec] {\n  width: 65%;\n  min-height: 70vh;\n  margin: 100px auto;\n}\n.container h5[data-v-77cb33ec] {\n  margin: 15px 0;\n}\n.container p[data-v-77cb33ec] {\n  margin: 20px 0;\n}\n.container h2[data-v-77cb33ec] {\n  margin-top: 15px;\n}\n.container .data[data-v-77cb33ec] {\n  font-style: italic;\n}\n.container .tags[data-v-77cb33ec] {\n  margin: 20px 0;\n  display: inline-block;\n}\n.container .tags span[data-v-77cb33ec] {\n  margin-right: 10px;\n}\n.container span[data-v-77cb33ec] {\n  padding: 8px;\n  background-color: lightseagreen;\n  border: 1px solid black;\n}\n.container .back_to_link[data-v-77cb33ec] {\n  color: red;\n  text-decoration: underline;\n}\n.container .back_to_link[data-v-77cb33ec]:hover {\n  text-decoration: underline;\n}", ""]);
+exports.push([module.i, ".container[data-v-77cb33ec] {\n  width: 65%;\n  min-height: 70vh;\n  margin: 100px auto;\n}\n.container h5[data-v-77cb33ec] {\n  margin: 15px 0;\n}\n.container p[data-v-77cb33ec] {\n  margin: 20px 0;\n}\n.container h2[data-v-77cb33ec] {\n  margin-top: 15px;\n}\n.container .image img[data-v-77cb33ec] {\n  width: 250px;\n  height: 400px;\n}\n.container .data[data-v-77cb33ec] {\n  font-style: italic;\n}\n.container .tags[data-v-77cb33ec] {\n  margin: 20px 0;\n  display: inline-block;\n}\n.container .tags span[data-v-77cb33ec] {\n  margin-right: 10px;\n}\n.container span[data-v-77cb33ec] {\n  padding: 8px;\n  background-color: lightseagreen;\n  border: 1px solid black;\n}\n.container .back_to_link[data-v-77cb33ec] {\n  color: red;\n  text-decoration: underline;\n}\n.container .back_to_link[data-v-77cb33ec]:hover {\n  text-decoration: underline;\n}", ""]);
 
 // exports
 
@@ -2697,7 +2702,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h4[data-v-52028fca] {\n  margin: 25px 0 5px;\n}\n.data[data-v-52028fca] {\n  font-size: 12px;\n  font-style: italic;\n  margin-bottom: 15px;\n}\n.singlePost a[data-v-52028fca] {\n  text-decoration: none;\n  color: black;\n}\n.singlePost a[data-v-52028fca]:hover {\n  color: lightseagreen;\n}\n.singlePost[data-v-52028fca] {\n  border: 1px solid lightgray;\n  border-radius: 10px;\n  padding: 0 10px 10px;\n  display: flex;\n}\n.singlePost .image-side[data-v-52028fca] {\n  width: 30%;\n}\n.singlePost .text-side[data-v-52028fca] {\n  width: 70%;\n}", ""]);
+exports.push([module.i, "h4[data-v-52028fca] {\n  margin: 25px 0 5px;\n}\n.data[data-v-52028fca] {\n  font-size: 12px;\n  font-style: italic;\n  margin-bottom: 15px;\n}\n.singlePost a[data-v-52028fca] {\n  text-decoration: none;\n  color: black;\n}\n.singlePost a[data-v-52028fca]:hover {\n  color: lightseagreen;\n}\n.singlePost[data-v-52028fca] {\n  border: 1px solid lightgray;\n  border-radius: 10px;\n  display: flex;\n  height: 150px;\n  margin-bottom: 10px;\n}\n.singlePost .image-side[data-v-52028fca] {\n  width: 30%;\n  overflow: hidden;\n}\n.singlePost .image-side img[data-v-52028fca] {\n  width: 100%;\n  max-height: 150px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.singlePost .text-side[data-v-52028fca] {\n  width: 70%;\n  padding: 0 10px 10px;\n  overflow-y: scroll;\n}", ""]);
 
 // exports
 
@@ -4491,6 +4496,10 @@ var render = function () {
         ])
       }),
       _vm._v(" "),
+      _c("div", { staticClass: "image" }, [
+        _c("img", { attrs: { src: _vm.post.image, alt: _vm.post.title } }),
+      ]),
+      _vm._v(" "),
       _c("p", [_vm._v(_vm._s(this.post.content))]),
       _vm._v(" "),
       _c(
@@ -4769,7 +4778,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "singlePost" }, [
-    _c("div", { staticClass: "image-side" }),
+    _vm.post.image
+      ? _c("div", { staticClass: "image-side" }, [
+          _c("img", { attrs: { src: _vm.post.image, alt: _vm.post.title } }),
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "text-side" }, [
       _c("h4", [

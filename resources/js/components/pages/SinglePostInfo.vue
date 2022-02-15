@@ -16,6 +16,10 @@
       v-for="(tag, index) in post.tags" :key="`tag${index}`">
       <span>{{ tag.name }}</span></div>
 
+      <div class="image">
+         <img :src="post.image" :alt="post.title">
+      </div>
+
       <p>{{ this.post.content }}</p>
 
       <router-link :to="{name: 'blog'}" class="back_to_link">Torna alla lista dei post</router-link>
@@ -82,6 +86,11 @@ export default {
       }
       h2{
          margin-top: 15px;
+      }
+
+      .image img{
+         width: 250px;
+         height: 400px;
       }
       .data{
          font-style: italic;

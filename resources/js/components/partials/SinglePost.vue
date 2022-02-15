@@ -1,8 +1,9 @@
 <template>
    <div class="singlePost">
 
-      <div class="image-side">
-
+      <div v-if="post.image"
+      class="image-side">
+         <img :src="post.image" :alt="post.title">
       </div>
 
       <div class="text-side">
@@ -64,13 +65,22 @@ h4{
 .singlePost{
    border: 1px solid lightgray;
    border-radius: 10px;
-   padding: 0 10px 10px;
    display: flex;
+   height: 150px;
+   margin-bottom: 10px;
    .image-side{
       width: 30%;
+      overflow: hidden;
+      img{
+         width: 100%;
+         max-height: 150px;
+         object-fit: cover;
+      }
    }
    .text-side{
       width: 70%;
+      padding: 0 10px 10px;
+      overflow-y:scroll;
    }
 }
 </style>

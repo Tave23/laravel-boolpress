@@ -17,10 +17,10 @@ class PostController extends Controller
         // percorsi assoluti
         $posts->each(function($post){
 
-            if ($post->cover) {
-                $post->cover = url('storage/' . $post->cover);
+            if ($post->image) {
+                $post->image = url('storage/' . $post->image);
             }else{
-                $post->cover = url('placeholder-image/placeholder.jpeg');
+                $post->image = url('placeholder-image/placeholder.jpeg');
             }
         });
 
@@ -33,6 +33,13 @@ class PostController extends Controller
     public function show($slug){
 
         $post = Post::where('slug', $slug)->with(['category', 'tags'])->first();
+
+        // percorsi assoluti
+        if ($post->image) {
+            $post->image = url('storage/' . $post->image);
+        }else{
+            $post->image = url('placeholder-image/placeholder.jpeg');
+        }
 
         if (!$post) {
             $post = [
@@ -50,6 +57,11 @@ class PostController extends Controller
         $category = Category::where('slug', $slug_categ)->with('posts.tags')->first();
         $success = true;
         $error_msg = '';
+
+        // percorsi assoluti
+        $category->posts->each(function($post){
+            $post->cover = $this->makeImageRoute($post->image);
+        });
 
         if (!$category) {
             $success = false;
@@ -71,6 +83,11 @@ class PostController extends Controller
         $success = true;
         $error_msg = '';
 
+        // percorsi assoluti
+        $tag->posts->each(function($post){
+            $post->cover = $this->makeImageRoute($post->image);
+        });
+
         if (!$tag) {
             $success = false;
             $error_msg = 'Tag non esistente';
@@ -80,5 +97,15 @@ class PostController extends Controller
         }
 
         return response()->json(compact('tag', 'success', 'error_msg'));
+    }
+
+    public function makeImageRoute($image){
+        if($image){
+            $image = url('storage/' . $image);
+        }else{
+            $image = url('placeholder-image/placeholder.jpeg');
+        }
+
+        return $image;
     }
 }
