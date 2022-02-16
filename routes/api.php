@@ -27,10 +27,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('{slug}', 'Api\PostController@show');
 
 Route::namespace('Api')
-   ->prefix('posts')
    ->group(function(){
-      Route::get('/', 'PostController@index');
-      Route::get('{slug}', 'PostController@show');
-      Route::get('/category/{slug}', 'PostController@PostByCategory');
-      Route::get('/tag/{slug}', 'PostController@PostByTag');
+      Route::get('/posts', 'PostController@index');
+      Route::get('posts/{slug}', 'PostController@show');
+      Route::get('posts/category/{slug}', 'PostController@PostByCategory');
+      Route::get('posts/tag/{slug}', 'PostController@PostByTag');
+      Route::post('contacts/', 'ContactController@store');
    });
